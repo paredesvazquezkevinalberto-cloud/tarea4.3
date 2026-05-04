@@ -1,0 +1,17 @@
+import numpy as np
+
+def simpson_rule(f, a, b, n):
+    if n % 2 == 1:
+        raise ValueError("n debe ser par.")
+    h = (b - a) / n
+    x = np.linspace(a, b, n+1)
+    fx = f(x)
+    return (h/3) * (fx[0] + 2*np.sum(fx[2:n:2]) + 4*np.sum(fx[1:n:2]) + fx[n])
+
+def f_resorte(x):
+    return 200*x
+
+a, b = 0.1, 0.3
+for n in [6, 10, 20, 30]:
+    approx = simpson_rule(f_resorte, a, b, n)
+    print(f"n={n}, Aproximación={approx:.6f}, Error={abs(approx-8):.6e}")
