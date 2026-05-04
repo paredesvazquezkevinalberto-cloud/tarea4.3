@@ -1,0 +1,10 @@
+import numpy as np
+
+def f_capacitor(t):
+    return 100*np.exp(-2*t)
+
+C = 1e-6
+a, b = 0, 5
+for n in [6, 10, 20, 30]:
+    approx = C * simpson_rule(f_capacitor, a, b, n)
+    print(f"n={n}, Aproximación={approx:.8e}, Error={abs(approx-4.99977e-5):.2e}")
