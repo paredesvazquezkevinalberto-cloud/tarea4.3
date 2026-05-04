@@ -1,0 +1,10 @@
+import numpy as np
+
+def f_calor(x):
+    return -100*x
+
+k = 0.5
+a, b = 0, 2
+for n in [6, 10, 20, 30]:
+    approx = k * simpson_rule(f_calor, a, b, n)
+    print(f"n={n}, Aproximación={approx:.6f}, Error={abs(approx+100):.6e}")
